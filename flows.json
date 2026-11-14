@@ -1,0 +1,601 @@
+[
+    {
+        "id": "0a282804c6c00356",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ec48e765c6ec559f",
+        "type": "influxdb out",
+        "z": "0a282804c6c00356",
+        "influxdb": "fa6353b93b67d405",
+        "name": "InfluxDB",
+        "measurement": "motion",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "CNM",
+        "bucket": "soil_monitor",
+        "x": 980,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1b820d616784fdf3",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "motion input",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "0ee952345d427a36",
+        "type": "mqtt in",
+        "z": "0a282804c6c00356",
+        "name": "Motion",
+        "topic": "soil_monitor/motion",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5b607096403f3166",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "1b820d616784fdf3",
+                "ec48e765c6ec559f"
+            ]
+        ]
+    },
+    {
+        "id": "114ac1a552654e70",
+        "type": "mqtt in",
+        "z": "0a282804c6c00356",
+        "name": "soil",
+        "topic": "soil_monitor/soil",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5b607096403f3166",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "d8c6025d1a8079ef"
+            ]
+        ]
+    },
+    {
+        "id": "d8c6025d1a8079ef",
+        "type": "json",
+        "z": "0a282804c6c00356",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "911c664c0ce3655b",
+                "1cb41067bc47017e"
+            ]
+        ]
+    },
+    {
+        "id": "911c664c0ce3655b",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "Soil json",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "828ce9978da2d5cf",
+        "type": "influxdb out",
+        "z": "0a282804c6c00356",
+        "influxdb": "fa6353b93b67d405",
+        "name": "InfluxDB",
+        "measurement": "soil",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "CNM",
+        "bucket": "soil_monitor",
+        "x": 980,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5516966c177f3ac5",
+        "type": "mqtt in",
+        "z": "0a282804c6c00356",
+        "name": "Temperature",
+        "topic": "soil_monitor/temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5b607096403f3166",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 480,
+        "wires": [
+            [
+                "d5e311ce7c5c6767",
+                "ad27421a65639b49"
+            ]
+        ]
+    },
+    {
+        "id": "30f72b4685d556b4",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "Temperature json",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "eeb230752ecf3fc5",
+        "type": "influxdb out",
+        "z": "0a282804c6c00356",
+        "influxdb": "fa6353b93b67d405",
+        "name": "InfluxDB",
+        "measurement": "Temperature",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "CNM",
+        "bucket": "soil_monitor",
+        "x": 1000,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "445881f10997894e",
+        "type": "mqtt in",
+        "z": "0a282804c6c00356",
+        "name": "Humidity",
+        "topic": "soil_monitor/humidity",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "5b607096403f3166",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 680,
+        "wires": [
+            [
+                "37cfb364f10434b3",
+                "b4648bf7956ac25f"
+            ]
+        ]
+    },
+    {
+        "id": "37cfb364f10434b3",
+        "type": "json",
+        "z": "0a282804c6c00356",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": true,
+        "x": 410,
+        "y": 680,
+        "wires": [
+            [
+                "a39a9ced80a42b7d",
+                "744c5496d36d2fcc"
+            ]
+        ]
+    },
+    {
+        "id": "a39a9ced80a42b7d",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "Humidity json",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "e9f518071bcba3a4",
+        "type": "influxdb out",
+        "z": "0a282804c6c00356",
+        "influxdb": "fa6353b93b67d405",
+        "name": "InfluxDB",
+        "measurement": "Humidity",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "CNM",
+        "bucket": "soil_monitor",
+        "x": 1000,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "b4648bf7956ac25f",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "Humidity input",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "744c5496d36d2fcc",
+        "type": "function",
+        "z": "0a282804c6c00356",
+        "name": "Humidity to number",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 680,
+        "wires": [
+            [
+                "1216d6e1952cf5ba",
+                "e9f518071bcba3a4"
+            ]
+        ]
+    },
+    {
+        "id": "1216d6e1952cf5ba",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "Humidity to Number",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "d5e311ce7c5c6767",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "Temperature input",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "ad27421a65639b49",
+        "type": "json",
+        "z": "0a282804c6c00356",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 390,
+        "y": 480,
+        "wires": [
+            [
+                "30f72b4685d556b4",
+                "59742acbe4b3caab"
+            ]
+        ]
+    },
+    {
+        "id": "59742acbe4b3caab",
+        "type": "function",
+        "z": "0a282804c6c00356",
+        "name": "Temperature to number",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 480,
+        "wires": [
+            [
+                "eeb230752ecf3fc5"
+            ]
+        ]
+    },
+    {
+        "id": "1cb41067bc47017e",
+        "type": "function",
+        "z": "0a282804c6c00356",
+        "name": "soil to number",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "d2a16000c33ba20c",
+                "828ce9978da2d5cf"
+            ]
+        ]
+    },
+    {
+        "id": "d2a16000c33ba20c",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "Soil to number",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "43175614e43e4296",
+        "type": "mqtt in",
+        "z": "0a282804c6c00356",
+        "name": "LED",
+        "topic": "soil_monitor/led_status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5b607096403f3166",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "522031912b0f86df",
+                "c6a1d4a8d4d3833b"
+            ]
+        ]
+    },
+    {
+        "id": "522031912b0f86df",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "led input",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "55d8eaea5cd85240",
+        "type": "influxdb out",
+        "z": "0a282804c6c00356",
+        "influxdb": "fa6353b93b67d405",
+        "name": "InfluxDB",
+        "measurement": "led",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "CNM",
+        "bucket": "soil_monitor",
+        "x": 980,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "24d3a881ddd87c57",
+        "type": "function",
+        "z": "0a282804c6c00356",
+        "name": "led to number",
+        "func": "msg.payload = Number(msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 100,
+        "wires": [
+            [
+                "55d8eaea5cd85240",
+                "32b8b8c66ee0c118"
+            ]
+        ]
+    },
+    {
+        "id": "c6a1d4a8d4d3833b",
+        "type": "json",
+        "z": "0a282804c6c00356",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 470,
+        "y": 100,
+        "wires": [
+            [
+                "24d3a881ddd87c57",
+                "75e368c28478886e"
+            ]
+        ]
+    },
+    {
+        "id": "75e368c28478886e",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "led json",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "32b8b8c66ee0c118",
+        "type": "debug",
+        "z": "0a282804c6c00356",
+        "name": "led to num",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "fa6353b93b67d405",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "soil_monitor",
+        "name": "soil_monitor",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "5b607096403f3166",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2e673ee2d508d236",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-influxdb": "0.7.0"
+        }
+    }
+]
